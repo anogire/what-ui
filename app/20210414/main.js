@@ -41,10 +41,13 @@ function getAmount() {
 
 function checkHappyTicket() {
   const ticket = prompt('Task #3: Enter a 6-digit number', '');
-
-  const regexp = new RegExp(`\\d{${TICKET_LENGTH}}`);
+  const regexp = new RegExp(`^(\\d){1,${TICKET_LENGTH}}$`);
   if (!regexp.test(ticket)) {
     return 'Wrong input';
+  }
+
+  if (!!(ticket.length % 2)) {
+    return 'NO';
   }
 
   let sum = 0;

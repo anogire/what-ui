@@ -1,3 +1,4 @@
+// Task 1
 function getSumMin(arr) {
   const sumMin = arr.reduce(
     (sum, item) => sum += Math.min(...item),
@@ -5,13 +6,13 @@ function getSumMin(arr) {
   return sumMin;
 }
 
-
+// Task 2
 function getTwoOldestAges(arr) {
   const twoMax = arr.sort((a, b) => a - b).slice(-2);
   return twoMax;
 }
 
-
+// Task 3
 function getShortestWord(str) {
   const arr = str.trim().split(/\s+/g);
   const shortWord = arr.reduce(

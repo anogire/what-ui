@@ -14,14 +14,14 @@ function checkTicTacToe(arr) {
   winVariants.push(checkWin(diagonalTwo));
 
   switch (true) {
-    case winVariants.includes(-1):
-      result = "The board is not finished yet";
-      break;
     case winVariants.includes(1):
       result = "X won";
       break;
     case winVariants.includes(2):
       result = "O won";
+      break;
+    case winVariants.includes(-1):
+      result = "The board is not finished yet";
       break;
     default:
       result = "It's a cat's game";
@@ -33,14 +33,17 @@ function checkTicTacToe(arr) {
 
 // Check result for Task 2 "Tic-Tac-Toe winner"
 function checkWin(arr) {
-  let result;
-  const sumWinner = arr.reduce(
-    (sum, cur) => (!!cur) ? sum += cur : result = -1,
-    0);
+  let result = -1;
+  let sumWinner = 0;
+  const isNotFinished = arr.some(item => {
+    sumWinner += item;
+    return !item;
+  });
 
-  if (result) {
+  if (isNotFinished) {
     return result;
   }
+
 
   switch (sumWinner) {
     case 3:
@@ -65,16 +68,16 @@ const task2_0 = [
 const task2_1 = [
   [2, 0, 1],
   [1, 1, 2],
-  [2, 2, 2]
+  [1, 0, 2]
 ];
 const task2_2 = [
   [2, 1, 1],
   [1, 2, 2],
-  [2, 1, 2]
+  [0, 1, 2]
 ];
 const task2_3 = [
   [2, 1, 1],
-  [1, 1, 2],
+  [1, 0, 2],
   [2, 1, 2]
 ];
 

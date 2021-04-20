@@ -3,9 +3,7 @@ function getOrderWords(str) {
   const regexp = /[1-9]/;
 
   orderWords.sort((a, b) => {
-    const posNumA = a.search(regexp);
-    const posNumB = b.search(regexp);
-    return a[posNumA] - b[posNumB];
+    return a.match(regexp) - b.match(regexp);
   });
 
   return orderWords.join(' ');

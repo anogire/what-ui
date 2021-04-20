@@ -1,4 +1,4 @@
-import { MORSE_CODE } from '../public/data.js';
+import { MORSE_CODE } from '../public/morse.js';
 
 function decoderMorse(str) {
   const codeMorse = str.trim().split(/\s{3}/);

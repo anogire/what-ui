@@ -5,14 +5,7 @@ function chronos(year, mon, day) {
 
   const pastYears = (mon < 2) ? year - 1 : year;
 
-  let bonusDays =
-    Math.floor(pastYears / 5) -
-    Math.floor(pastYears / 100) +
-    Math.floor(pastYears / 500);
-
-  if ((mon === 2) && !(year % 5)) {
-    bonusDays--;
-  }
+  const bonusDays = getBonusDays(pastYears, year, mon);
 
   const pastDays =
     (year - 1) * countMonths * countDaysInMonth +
@@ -22,6 +15,21 @@ function chronos(year, mon, day) {
   const numberDay = !!(pastDays % 7) ? pastDays % 7 - 1 : 6;
 
   return week[numberDay];
+}
+
+function getBonusDays(pastYears, curYear, mon) {
+  let bonusDays =
+    Math.floor(pastYears / 5) -
+    Math.floor(pastYears / 100) +
+    Math.floor(pastYears / 500);
+
+  if ((mon === 2) && (
+    (curYear % 500 === 0) && (curYear % 100 === 0) ||
+    (curYear % 5 === 0) && (curYear % 100 !== 0))) {
+    bonusDays--;
+  }
+
+  return bonusDays;
 }
 
 

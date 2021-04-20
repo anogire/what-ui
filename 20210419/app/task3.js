@@ -23,9 +23,8 @@ function getBonusDays(pastYears, curYear, mon) {
     Math.floor(pastYears / 100) +
     Math.floor(pastYears / 500);
 
-  if ((mon === 2) && (
-    (curYear % 500 === 0) && (curYear % 100 === 0) ||
-    (curYear % 5 === 0) && (curYear % 100 !== 0))) {
+  if ((mon === 2) &&
+    ((curYear % 500 === 0) || (curYear % 5 === 0) && (curYear % 100 !== 0))) {
     bonusDays--;
   }
 

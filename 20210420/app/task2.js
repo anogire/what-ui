@@ -1,7 +1,7 @@
 // Найти все комбинации с максимальным произведением
 function findPartMaxProduct(num) {
   const partitions = getCombinations(num); // разбиение на слагаемые
-  const [partsWithProduct, maxProduct] = getMaxProduct(partitions); // слагаемые с произведениями и max из произведений
+  const { partsWithProduct, maxProduct } = getMaxProduct(partitions); // слагаемые с произведениями и max из произведений
 
   const partMaxProd = partsWithProduct.filter(item => item[0] === maxProduct)
     .map(item => item[1])
@@ -17,7 +17,7 @@ function getCombinations(num, enough = num) {
   for (let i = 1; i <= Math.min(num, enough); i++) {
     let prevItem = getCombinations(num - i, i);
     if (prevItem.length !== 0) {
-      prevItem.forEach(el => item.push(Array.from([i, el]).flat(num)));
+      prevItem.forEach(el => item.push([i, el].flat(num)));
     } else {
       item.push([i]);
     }
@@ -28,15 +28,15 @@ function getCombinations(num, enough = num) {
 // Подсчет произведения для каждой комбинации слагаемых
 function getMaxProduct(partitions) {
   let maxProduct = 0;
-  partsWithProduct = partitions.map(el => {
+  const partsWithProduct = partitions.map(el => {
     let curProduct = el.reduce((multi, cur) => multi * cur, 1);
     if (curProduct > maxProduct) {
       maxProduct = curProduct;
     }
-    return Array.from([curProduct, el]);
+    return [curProduct, el];
   })
 
-  return [partsWithProduct, maxProduct];
+  return { partsWithProduct, maxProduct };
 }
 
 

@@ -1,8 +1,5 @@
 class Dictionary {
-  #definition;
-  constructor() {
-    this.#definition = {};
-  }
+  #definition = {};
 
   newEntry(key, value) {
     (key && value) ? this.#definition[key] = value : console.log('Invalid input');

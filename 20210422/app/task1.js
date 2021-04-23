@@ -3,10 +3,6 @@ class Hex {
     this.number = num;
   }
 
-  static parse(str) {
-    return +parseInt(str, 16);
-  }
-
   set number(num) {
     if (num < 0 || isNaN(+num)) return false;
     this._number = num;
@@ -16,26 +12,24 @@ class Hex {
     return this._number;
   }
 
-  toString() {
-    return `0x${this.number.toString(16).toUpperCase()}`;
-  }
+  static parse = (str) => +parseInt(str, 16)
 
-  toJSON() {
-    return this.toString();
-  }
+  toString = () => `0x${this.number.toString(16).toUpperCase()}`
 
-  valueOf() {
-    return this.number;
-  }
+  toJSON = () => this.toString()
+
+  valueOf = () => this.number
 
   plus(num) {
-    const sum = new Hex(this.number + num);
-    return sum;
+    const entry = (num == 'object') ? num.valueOf() : num;
+    const sum = this.number + entry;
+    return new Hex(sum);
   }
 
   minus(num) {
-    const difference = new Hex(this.number - num);
-    return difference;
+    const entry = (num == 'object') ? num.valueOf() : num;
+    const difference = this.number - entry;
+    return new Hex(difference);
   }
 }
 

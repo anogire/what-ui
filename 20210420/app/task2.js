@@ -76,3 +76,16 @@ console.log('n = 10 - ', findPartMaxProduct(10));
 
 //   return partitions;
 // }
+
+
+// Читерский вариант, но не работает
+// function cheater(n) {
+//   let count3 = ~~(n / 3);
+//   let ost = n % 3;
+//   if (ost == 1) {
+//     ost = 4;
+//     count3--;
+//   }
+//   const multi = 3 * count3 + ost;
+//   return [...[3].repeat(count3), ost, multi];
+// }

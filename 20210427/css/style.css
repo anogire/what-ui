@@ -1,0 +1,12 @@
+.weather-wrap {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.weather{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

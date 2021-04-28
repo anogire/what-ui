@@ -6,7 +6,7 @@ export default class Model {
     const cityUrl = `${this.url}weather?q=${city}&appid=${this.apiKey}`;
     try {
       const res = await fetch(cityUrl).then(res => res.json());
-      return res;
+      return (res.cod == "200") ? res : false;
     } catch (err) {
       console.log(err);
     }
